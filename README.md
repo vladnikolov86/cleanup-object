@@ -6,7 +6,7 @@ Small utility that cleans up object recursively. It works with objects with any 
  1.  "" /empty string/
  2. null
  3. undefined
- 4. [] - empty array
+ 4. [] - empty array 
 For example, given the following object:
 ```json
 const cleaner = require('node-object-cleaner');

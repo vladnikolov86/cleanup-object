@@ -1,4 +1,10 @@
 var cachedItem = {};
+var options = {};
+const defaultOptions = {
+  trimArrays: true,
+  emptyValues: [null, undefined, ''],
+  checkForNaN: false
+};
 
 /**
  * Check if current object is of type array
@@ -37,7 +43,14 @@ function checkForPrimitiveValue(val) {
  * @param {Any} val - object to be checked
  */
 function checkForEmptyValues(val) {
-  return val === null || val === '' || val === undefined;
+  let valIsEmpty = false;
+  for (let emptyValue of options.emptyValues) {
+    if (emptyValue === val) {
+      valIsEmpty = true;
+      break;
+    }
+  }
+  return valIsEmpty;
 }
 
 /**
@@ -59,6 +72,13 @@ function checkForEmptyArrays(arr, propertyName, originalCollection) {
     if (checkForPrimitiveValue(arr[i])) {
       continue;
     }
+
+    if ((arr[i] === null || arr[i] === undefined || arr[i] === '') && options.trimArrays) {
+      arr.splice(i, 1);
+      continue;
+    }
+
+
     if (arr[i]) {
       var keys = Object.keys(arr[i]);
       if (keys.length === 0) {
@@ -109,12 +129,23 @@ function checkForObjectWithNullValues(obj) {
 /**
  * Main function to be executed for processing the object
  * @param {Object} obj - original object for checking
+ * @param {Object} config - configuration object
  */
 
-module.exports = function (obj) {
+module.exports = function (obj, config) {
   cachedItem = obj;
+  if (!config) {
+    options = JSON.parse(JSON.stringify(defaultOptions));
+  } else {
+    for (var prop in defaultOptions) {
+      if (!config.hasOwnProperty(prop)) {
+        options[prop] = defaultOptions[prop];
+      } else {
+        options[prop] = config[prop];
+      }
+    }
+  }
+
   obj = checkForObjectWithNullValues(obj);
   return obj;
 }
-
-
