@@ -1,6 +1,6 @@
 {
   "name": "node-object-cleaner",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Cleaner for JavaScript objects - removes objects that have any of the following value : [], null, undefined,''. Checks objects recursively.",
   "main": "index.js",
   "scripts": {
