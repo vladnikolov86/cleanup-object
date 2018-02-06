@@ -1,0 +1,27 @@
+{
+  "name": "node-object-cleaner",
+  "version": "1.0.0",
+  "description": "Cleaner for JavaScript objects - removes objects that have any of the following value : [], null, undefined,''. Checks objects recursively.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvn050/cleanup-object.git"
+  },
+  "keywords": [
+    "node",
+    "object",
+    "cleaner",
+    "empty",
+    "null",
+    "remover"
+  ],
+  "author": "Vladislav Nikolov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vvn050/cleanup-object/issues"
+  },
+  "homepage": "https://github.com/vvn050/cleanup-object#readme"
+}

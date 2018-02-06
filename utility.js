@@ -110,7 +110,8 @@ function checkForObjectWithNullValues(obj) {
  * Main function to be executed for processing the object
  * @param {Object} obj - original object for checking
  */
-function checkObjectForEmptyValuesRecursive(obj) {
+
+module.exports = function (obj) {
   cachedItem = obj;
   obj = checkForObjectWithNullValues(obj);
   return obj;
