@@ -1,6 +1,7 @@
+
 ## Object empty values recursive remover
 
-Small utility that cleans up object recursively. It works with objects with any level of nesting, and removes objects that has any of the following value:
+Small utility that cleans up object recursively. It works with objects with any level of nesting, and removes objects that have any of the following value:
 
  1.  "" /empty string/
  2. null
@@ -8,6 +9,7 @@ Small utility that cleans up object recursively. It works with objects with any 
  4. [] - empty array
 For example, given the following object:
 ```json
+const cleaner = require('node-object-cleaner');
     let obj = {
       test: [{
         shouldBeRemoved: {
@@ -30,7 +32,7 @@ For example, given the following object:
     
       ],
       shouldRemove: {
-        removedValue: []
+        removedValue: null
       },
       shouldRemain: {
         shouldRemainToo: {
@@ -38,5 +40,7 @@ For example, given the following object:
         }
       }
     }
+    //clean the above object
+    cleaner(obj);
 ```
-In the above example, the end result should be an object with two keys: shouldRemain, and test /but only one of the children, the other one should be removed/.
+In the above example, the end result should be an object with two keys: shouldNotBeRemoved, and shouldRemain.
